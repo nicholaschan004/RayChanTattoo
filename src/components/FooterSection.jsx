@@ -3,9 +3,9 @@ import { Instagram, Mail, MapPin } from 'lucide-react';
 
 export default function FooterSection() {
   return (
-    <footer className="relative bg-obsidian pt-24 pb-12 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #080808, #040508)' }}>
-      {/* Top gold line */}
-      <div className="absolute top-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+    <footer className="relative pt-24 pb-12 overflow-hidden">
+      {/* Top crimson line */}
+      <div className="absolute top-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-crimson/30 to-transparent" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-3 gap-16 mb-20">
@@ -17,7 +17,7 @@ export default function FooterSection() {
             transition={{ duration: 0.8 }}
           >
             <h3 className="font-syne text-5xl font-extrabold text-silk mb-4">
-              <span className="text-gold">R</span>
+              <span className="text-crimson">R</span>
             </h3>
             <p className="font-inter text-silk/30 text-sm tracking-wider leading-relaxed">
               Custom Japanese tattoo art.<br />
@@ -32,7 +32,7 @@ export default function FooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h4 className="font-inter text-[10px] tracking-[0.3em] uppercase text-gold/50 mb-6">Navigate</h4>
+            <h4 className="font-inter text-[10px] tracking-[0.3em] uppercase text-crimson/50 mb-6">Navigate</h4>
             <div className="space-y-3">
               {[
                 { label: 'Portfolio', href: '#portfolio' },
@@ -43,7 +43,7 @@ export default function FooterSection() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="block font-inter text-sm text-silk/30 hover:text-gold tracking-wider transition-colors duration-500"
+                  className="block font-inter text-sm text-silk/30 hover:text-crimson tracking-wider transition-colors duration-500"
                 >
                   {link.label}
                 </a>
@@ -58,20 +58,20 @@ export default function FooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h4 className="font-inter text-[10px] tracking-[0.3em] uppercase text-gold/50 mb-6">Connect</h4>
+            <h4 className="font-inter text-[10px] tracking-[0.3em] uppercase text-crimson/50 mb-6">Connect</h4>
             <div className="space-y-4">
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-silk/30 hover:text-gold transition-colors duration-500"
+                className="flex items-center gap-3 text-silk/30 hover:text-crimson transition-colors duration-500"
               >
                 <Instagram size={16} strokeWidth={1.5} />
                 <span className="font-inter text-sm tracking-wider">@irezumi.r</span>
               </a>
               <a
                 href="mailto:studio@irezumi-r.com"
-                className="flex items-center gap-3 text-silk/30 hover:text-gold transition-colors duration-500"
+                className="flex items-center gap-3 text-silk/30 hover:text-crimson transition-colors duration-500"
               >
                 <Mail size={16} strokeWidth={1.5} />
                 <span className="font-inter text-sm tracking-wider">studio@irezumi-r.com</span>

@@ -34,7 +34,7 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="relative py-32 bg-obsidian overflow-hidden">
+    <section id="process" className="relative py-32 overflow-hidden">
       {/* Background decorative */}
       <div className="hidden lg:block absolute left-10 top-1/2 -translate-y-1/2 opacity-[0.03]">
         <span className="font-serif text-[240px] text-silk" style={{ writingMode: 'vertical-rl' }}>
@@ -51,11 +51,11 @@ export default function ProcessSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <span className="font-serif text-gold/40 text-sm tracking-wider">工程</span>
+          <span className="font-serif text-crimson/40 text-sm tracking-wider">工程</span>
           <h2 className="font-syne text-4xl md:text-6xl font-bold tracking-tight text-silk mt-2 uppercase">
             The Process
           </h2>
-          <div className="w-12 h-[0.5px] bg-gold/50 mt-6 mx-auto" />
+          <div className="w-12 h-[0.5px] bg-crimson/50 mt-6 mx-auto" />
           <p className="font-inter text-silk/40 text-sm tracking-wider mt-6 max-w-md mx-auto">
             The way of the needle — from vision to permanence
           </p>
@@ -63,8 +63,8 @@ export default function ProcessSection() {
 
         {/* Timeline */}
         <div className="relative max-w-3xl mx-auto">
-          {/* Vertical gold line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[0.5px] bg-gradient-to-b from-gold/40 via-gold/20 to-transparent" />
+          {/* Vertical crimson line */}
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[0.5px] bg-gradient-to-b from-crimson/40 via-crimson/20 to-transparent" />
 
           {steps.map((step, i) => {
             const Icon = step.icon;
@@ -81,16 +81,16 @@ export default function ProcessSection() {
                   }`}
               >
                 {/* Node on timeline */}
-                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border border-gold/50 bg-obsidian flex items-center justify-center z-10">
-                  <div className="w-1.5 h-1.5 rounded-full bg-gold/70" />
+                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border border-crimson/50 bg-obsidian flex items-center justify-center z-10">
+                  <div className="w-1.5 h-1.5 rounded-full bg-crimson/70" />
                 </div>
 
                 {/* Content card */}
                 <div className={`ml-16 md:ml-0 md:w-[calc(50%-40px)] ${isLeft ? 'md:pr-10 md:text-right' : 'md:pl-10 md:text-left'}`}>
                   <div className="flex items-center gap-3 mb-3" style={{ justifyContent: isLeft ? undefined : undefined }}>
-                    <span className="font-serif text-3xl text-gold/30">{step.num}</span>
+                    <span className="font-serif text-3xl text-crimson/30">{step.num}</span>
                     <div className={`flex items-center gap-2 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
-                      <Icon size={16} className="text-gold/60" strokeWidth={1.5} />
+                      <Icon size={16} className="text-crimson/60" strokeWidth={1.5} />
                       <h3 className="font-syne text-lg font-semibold tracking-[0.1em] uppercase text-silk">
                         {step.title}
                       </h3>
@@ -106,8 +106,8 @@ export default function ProcessSection() {
         </div>
       </div>
 
-      {/* Bottom gold line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      {/* Bottom crimson line */}
+      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-crimson/20 to-transparent" />
     </section>
   );
 }

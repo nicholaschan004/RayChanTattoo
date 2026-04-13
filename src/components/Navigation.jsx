@@ -32,13 +32,13 @@ export default function Navigation() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'bg-obsidian/90 backdrop-blur-md border-b border-gold/10' : ''
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'bg-obsidian/90 backdrop-blur-md border-b border-crimson/10' : ''
           }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
           <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-syne text-xl font-bold tracking-widest text-silk hover:text-gold transition-colors">
-            墨<span className="text-gold">R</span>
+            className="hover:opacity-80 transition-opacity">
+            <img src="/logo-200.png" alt="Ray Chan Tattoo" className="h-10 w-auto" />
           </a>
 
           {/* Desktop links */}
@@ -47,9 +47,9 @@ export default function Navigation() {
               <button
                 key={link.label}
                 onClick={() => scrollTo(link.href)}
-                className="group relative font-inter text-xs tracking-[0.2em] uppercase text-silk/60 hover:text-gold transition-colors duration-500"
+                className="group relative font-inter text-xs tracking-[0.2em] uppercase text-silk/60 hover:text-crimson transition-colors duration-500"
               >
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] font-serif text-gold/0 group-hover:text-gold/40 transition-all duration-500">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] font-serif text-crimson/0 group-hover:text-crimson/40 transition-all duration-500">
                   {link.kanji}
                 </span>
                 {link.label}
@@ -57,7 +57,7 @@ export default function Navigation() {
             ))}
             <button
               onClick={() => scrollTo('#booking')}
-              className="ml-4 px-6 py-2 border border-gold/40 text-gold text-xs tracking-[0.15em] uppercase font-inter hover:bg-gold hover:text-obsidian transition-all duration-500"
+              className="ml-4 px-6 py-2 border border-crimson/40 text-crimson text-xs tracking-[0.15em] uppercase font-inter hover:bg-crimson hover:text-obsidian transition-all duration-500"
             >
               Book Session
             </button>
@@ -65,7 +65,7 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-silk/70 hover:text-gold transition-colors"
+            className="md:hidden text-silk/70 hover:text-crimson transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -91,8 +91,8 @@ export default function Navigation() {
                 onClick={() => scrollTo(link.href)}
                 className="text-center"
               >
-                <span className="block font-serif text-gold/40 text-sm mb-1">{link.kanji}</span>
-                <span className="font-syne text-3xl font-bold tracking-[0.15em] uppercase text-silk hover:text-gold transition-colors">
+                <span className="block font-serif text-crimson/40 text-sm mb-1">{link.kanji}</span>
+                <span className="font-syne text-3xl font-bold tracking-[0.15em] uppercase text-silk hover:text-crimson transition-colors">
                   {link.label}
                 </span>
               </motion.button>
@@ -102,7 +102,7 @@ export default function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
               onClick={() => scrollTo('#booking')}
-              className="mt-6 px-10 py-3 border border-gold/40 text-gold text-sm tracking-[0.15em] uppercase font-inter hover:bg-gold hover:text-obsidian transition-all duration-500"
+              className="mt-6 px-10 py-3 border border-crimson/40 text-crimson text-sm tracking-[0.15em] uppercase font-inter hover:bg-crimson hover:text-obsidian transition-all duration-500"
             >
               Book Session
             </motion.button>

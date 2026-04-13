@@ -53,15 +53,15 @@ export default function BookingSection() {
 
   if (submitted) {
     return (
-      <section id="booking" className="relative py-32 bg-charcoal">
+      <section id="booking" className="relative py-32 bg-white/[0.02]">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-6"
           >
-            <div className="w-16 h-16 rounded-full border border-gold/40 flex items-center justify-center mx-auto">
-              <Check className="text-gold" size={28} strokeWidth={1.5} />
+            <div className="w-16 h-16 rounded-full border border-crimson/40 flex items-center justify-center mx-auto">
+              <Check className="text-crimson" size={28} strokeWidth={1.5} />
             </div>
             <h2 className="font-syne text-3xl md:text-4xl font-bold text-silk uppercase tracking-tight">
               Request Received
@@ -76,7 +76,7 @@ export default function BookingSection() {
   }
 
   return (
-    <section id="booking" className="relative py-32 bg-charcoal overflow-hidden">
+    <section id="booking" className="relative py-32 bg-white/[0.02] overflow-hidden">
       {/* Decorative kanji */}
       <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 opacity-[0.03]">
         <span className="font-serif text-[200px] text-silk" style={{ writingMode: 'vertical-rl' }}>予約</span>
@@ -93,11 +93,11 @@ export default function BookingSection() {
               transition={{ duration: 0.8 }}
               className="lg:sticky lg:top-32"
             >
-              <span className="font-serif text-gold/40 text-sm tracking-wider">予約</span>
+              <span className="font-serif text-crimson/40 text-sm tracking-wider">予約</span>
               <h2 className="font-syne text-4xl md:text-5xl font-bold tracking-tight text-silk mt-2 uppercase">
                 Book Your<br />Session
               </h2>
-              <div className="w-12 h-[0.5px] bg-gold/50 mt-6 mb-8" />
+              <div className="w-12 h-[0.5px] bg-crimson/50 mt-6 mb-8" />
               <p className="font-inter text-silk/40 text-sm tracking-wider leading-relaxed">
                 Begin the ritual. Share your vision and let's create something timeless together.
               </p>
@@ -111,7 +111,7 @@ export default function BookingSection() {
                     className={`flex items-center gap-4 transition-all duration-500 ${step === i ? 'opacity-100' : 'opacity-30 hover:opacity-50'
                       }`}
                   >
-                    <div className={`w-8 h-8 flex items-center justify-center border text-xs font-inter transition-all ${step === i ? 'border-gold text-gold' : 'border-silk/20 text-silk/40'
+                    <div className={`w-8 h-8 flex items-center justify-center border text-xs font-inter transition-all ${step === i ? 'border-crimson text-crimson' : 'border-silk/20 text-silk/40'
                       }`}>
                       {i + 1}
                     </div>
@@ -147,20 +147,20 @@ export default function BookingSection() {
                 <div className="space-y-8">
                   <div>
                     <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-                      Tattoo Idea <span className="text-gold">*</span>
+                      Tattoo Idea <span className="text-crimson">*</span>
                     </label>
                     <textarea
                       value={form.tattoo_idea}
                       onChange={(e) => update('tattoo_idea', e.target.value)}
                       rows={5}
                       placeholder="Describe your vision — the story, elements, symbolism..."
-                      className="w-full bg-transparent border-b border-silk/10 focus:border-gold/50 text-silk font-inter text-sm tracking-wide pb-3 placeholder:text-silk/15 outline-none resize-none transition-colors duration-500"
+                      className="w-full bg-transparent border-b border-silk/10 focus:border-crimson/50 text-silk font-inter text-sm tracking-wide pb-3 placeholder:text-silk/15 outline-none resize-none transition-colors duration-500"
                     />
                   </div>
 
                   <div>
                     <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-                      Body Placement <span className="text-gold">*</span>
+                      Body Placement <span className="text-crimson">*</span>
                     </label>
                     <div className="flex flex-wrap gap-2">
                       {placements.map((p) => (
@@ -168,7 +168,7 @@ export default function BookingSection() {
                           key={p}
                           onClick={() => update('placement', p)}
                           className={`px-4 py-2 border text-xs tracking-wider font-inter transition-all duration-300 ${form.placement === p
-                              ? 'border-gold bg-gold/10 text-gold'
+                              ? 'border-crimson bg-crimson/10 text-crimson'
                               : 'border-silk/10 text-silk/30 hover:border-silk/20'
                             }`}
                         >
@@ -180,7 +180,7 @@ export default function BookingSection() {
 
                   <div>
                     <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-                      Approximate Size <span className="text-gold">*</span>
+                      Approximate Size <span className="text-crimson">*</span>
                     </label>
                     <div className="flex flex-wrap gap-2">
                       {sizes.map((s) => (
@@ -188,7 +188,7 @@ export default function BookingSection() {
                           key={s}
                           onClick={() => update('size', s)}
                           className={`px-4 py-2 border text-xs tracking-wider font-inter transition-all duration-300 ${form.size === s
-                              ? 'border-gold bg-gold/10 text-gold'
+                              ? 'border-crimson bg-crimson/10 text-crimson'
                               : 'border-silk/10 text-silk/30 hover:border-silk/20'
                             }`}
                         >
@@ -203,13 +203,13 @@ export default function BookingSection() {
                     <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
                       Reference Images
                     </label>
-                    <label className="flex flex-col items-center justify-center w-full h-36 border border-dashed border-silk/10 hover:border-gold/30 cursor-pointer transition-all duration-500 group">
+                    <label className="flex flex-col items-center justify-center w-full h-36 border border-dashed border-silk/10 hover:border-crimson/30 cursor-pointer transition-all duration-500 group">
                       <input type="file" accept="image/*" multiple onChange={handleFileUpload} className="hidden" />
                       {uploadingFile ? (
-                        <Loader2 size={20} className="text-gold animate-spin" />
+                        <Loader2 size={20} className="text-crimson animate-spin" />
                       ) : (
                         <>
-                          <Upload size={20} className="text-silk/20 group-hover:text-gold/50 transition-colors mb-2" strokeWidth={1.5} />
+                          <Upload size={20} className="text-silk/20 group-hover:text-crimson/50 transition-colors mb-2" strokeWidth={1.5} />
                           <span className="font-inter text-[10px] tracking-wider text-silk/20 group-hover:text-silk/40 transition-colors">
                             Drop references here
                           </span>
@@ -272,7 +272,7 @@ export default function BookingSection() {
                 {step < 2 ? (
                   <button
                     onClick={() => setStep(step + 1)}
-                    className="px-8 py-3 border border-gold/40 text-gold font-inter text-xs tracking-[0.15em] uppercase hover:bg-gold hover:text-obsidian transition-all duration-500"
+                    className="px-8 py-3 border border-crimson/40 text-crimson font-inter text-xs tracking-[0.15em] uppercase hover:bg-crimson hover:text-obsidian transition-all duration-500"
                   >
                     Continue →
                   </button>
@@ -280,7 +280,7 @@ export default function BookingSection() {
                   <button
                     onClick={handleSubmit}
                     disabled={submitting}
-                    className="px-10 py-3.5 bg-gold text-obsidian font-inter text-xs tracking-[0.15em] uppercase font-medium hover:bg-gold-light transition-all duration-500 disabled:opacity-50 flex items-center gap-2"
+                    className="px-10 py-3.5 bg-crimson text-obsidian font-inter text-xs tracking-[0.15em] uppercase font-medium hover:bg-crimson-light transition-all duration-500 disabled:opacity-50 flex items-center gap-2"
                   >
                     {submitting && <Loader2 size={14} className="animate-spin" />}
                     Request Appointment
@@ -292,7 +292,7 @@ export default function BookingSection() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-crimson/20 to-transparent" />
     </section>
   );
 }
@@ -301,13 +301,13 @@ function InputField({ label, type = 'text', value, onChange, required }) {
   return (
     <div>
       <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-        {label} {required && <span className="text-gold">*</span>}
+        {label} {required && <span className="text-crimson">*</span>}
       </label>
       <input
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-transparent border-b border-silk/10 focus:border-gold/50 text-silk font-inter text-sm tracking-wide pb-3 placeholder:text-silk/15 outline-none transition-colors duration-500"
+        className="w-full bg-transparent border-b border-silk/10 focus:border-crimson/50 text-silk font-inter text-sm tracking-wide pb-3 placeholder:text-silk/15 outline-none transition-colors duration-500"
       />
     </div>
   );

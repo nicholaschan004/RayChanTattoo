@@ -30,7 +30,7 @@ export default function PortfolioSection() {
     : portfolioItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="portfolio" className="relative py-32 bg-obsidian">
+    <section id="portfolio" className="relative py-32">
       {/* Section header */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 mb-16">
         <motion.div
@@ -39,11 +39,11 @@ export default function PortfolioSection() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
         >
-          <span className="font-serif text-gold/40 text-sm tracking-wider">作品集</span>
+          <span className="font-serif text-crimson/40 text-sm tracking-wider">作品集</span>
           <h2 className="font-syne text-4xl md:text-6xl font-bold tracking-tight text-silk mt-2 uppercase">
             Portfolio
           </h2>
-          <div className="w-12 h-[0.5px] bg-gold/50 mt-6" />
+          <div className="w-12 h-[0.5px] bg-crimson/50 mt-6" />
         </motion.div>
 
         {/* Category filters */}
@@ -59,8 +59,8 @@ export default function PortfolioSection() {
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
               className={`group flex items-center gap-2 px-5 py-2.5 border text-xs tracking-[0.15em] uppercase font-inter transition-all duration-500 ${activeCategory === cat.id
-                  ? 'border-gold bg-gold/10 text-gold'
-                  : 'border-silk/10 text-silk/40 hover:border-gold/30 hover:text-silk/70'
+                  ? 'border-crimson bg-crimson/10 text-crimson'
+                  : 'border-silk/10 text-silk/40 hover:border-crimson/30 hover:text-silk/70'
                 }`}
             >
               <span className="font-serif text-sm opacity-50">{cat.kanji}</span>
@@ -92,18 +92,18 @@ export default function PortfolioSection() {
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-obsidian/0 group-hover:bg-obsidian/60 transition-all duration-500 flex items-end">
                 <div className="p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="font-serif text-gold/60 text-xs">{categories.find(c => c.id === item.category)?.kanji}</span>
+                  <span className="font-serif text-crimson/60 text-xs">{categories.find(c => c.id === item.category)?.kanji}</span>
                   <h3 className="font-syne text-silk text-lg font-semibold tracking-wide uppercase mt-1">
                     {item.title}
                   </h3>
-                  <span className="inline-block mt-2 text-gold text-[10px] tracking-[0.3em] uppercase font-inter">
+                  <span className="inline-block mt-2 text-crimson text-[10px] tracking-[0.3em] uppercase font-inter">
                     View Piece →
                   </span>
                 </div>
               </div>
               {/* Gold corner accents on hover */}
-              <div className="absolute top-3 left-3 w-6 h-6 border-t border-l border-gold/0 group-hover:border-gold/40 transition-all duration-500" />
-              <div className="absolute bottom-3 right-3 w-6 h-6 border-b border-r border-gold/0 group-hover:border-gold/40 transition-all duration-500" />
+              <div className="absolute top-3 left-3 w-6 h-6 border-t border-l border-crimson/0 group-hover:border-crimson/40 transition-all duration-500" />
+              <div className="absolute bottom-3 right-3 w-6 h-6 border-b border-r border-crimson/0 group-hover:border-crimson/40 transition-all duration-500" />
             </motion.div>
           ))}
         </div>
@@ -119,8 +119,8 @@ export default function PortfolioSection() {
         />
       )}
 
-      {/* Bottom gold line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      {/* Bottom crimson line */}
+      <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-crimson/20 to-transparent" />
     </section>
   );
 }

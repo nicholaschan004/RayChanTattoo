@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Noto+Serif+JP:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Noto+Serif+JP:wght@300;400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,23 +12,23 @@
         --card-foreground: 40 20% 94%;
         --popover: 0 0% 5%;
         --popover-foreground: 40 20% 94%;
-        --primary: 43 72% 38%;
+        --primary: 354 62% 40%;
         --primary-foreground: 0 0% 3.1%;
         --secondary: 0 0% 10%;
         --secondary-foreground: 40 20% 94%;
         --muted: 0 0% 12%;
-        --muted-foreground: 40 10% 55%;
-        --accent: 43 72% 38%;
+        --muted-foreground: 0 10% 55%;
+        --accent: 354 62% 40%;
         --accent-foreground: 0 0% 3.1%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-        --border: 43 20% 18%;
+        --border: 354 15% 15%;
         --input: 0 0% 15%;
-        --ring: 43 72% 38%;
-        --chart-1: 43 72% 38%;
-        --chart-2: 43 50% 30%;
+        --ring: 354 62% 40%;
+        --chart-1: 354 62% 40%;
+        --chart-2: 354 45% 28%;
         --chart-3: 0 0% 50%;
-        --chart-4: 43 74% 66%;
+        --chart-4: 354 65% 55%;
         --chart-5: 0 0% 70%;
         --radius: 0.25rem;
 
@@ -38,12 +38,12 @@
 
         --sidebar-background: 0 0% 5%;
         --sidebar-foreground: 40 20% 94%;
-        --sidebar-primary: 43 72% 38%;
+        --sidebar-primary: 354 62% 40%;
         --sidebar-primary-foreground: 0 0% 3.1%;
         --sidebar-accent: 0 0% 10%;
         --sidebar-accent-foreground: 40 20% 94%;
-        --sidebar-border: 43 20% 18%;
-        --sidebar-ring: 43 72% 38%;
+        --sidebar-border: 354 15% 15%;
+        --sidebar-ring: 354 62% 40%;
     }
 
     .dark {
@@ -53,32 +53,32 @@
         --card-foreground: 40 20% 94%;
         --popover: 0 0% 5%;
         --popover-foreground: 40 20% 94%;
-        --primary: 43 72% 38%;
+        --primary: 354 62% 40%;
         --primary-foreground: 0 0% 3.1%;
         --secondary: 0 0% 10%;
         --secondary-foreground: 40 20% 94%;
         --muted: 0 0% 12%;
-        --muted-foreground: 40 10% 55%;
-        --accent: 43 72% 38%;
+        --muted-foreground: 0 10% 55%;
+        --accent: 354 62% 40%;
         --accent-foreground: 0 0% 3.1%;
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 0 0% 98%;
-        --border: 43 20% 18%;
+        --border: 354 15% 15%;
         --input: 0 0% 15%;
-        --ring: 43 72% 38%;
-        --chart-1: 43 72% 38%;
-        --chart-2: 43 50% 30%;
+        --ring: 354 62% 40%;
+        --chart-1: 354 62% 40%;
+        --chart-2: 354 45% 28%;
         --chart-3: 0 0% 50%;
-        --chart-4: 43 74% 66%;
+        --chart-4: 354 65% 55%;
         --chart-5: 0 0% 70%;
         --sidebar-background: 0 0% 5%;
         --sidebar-foreground: 40 20% 94%;
-        --sidebar-primary: 43 72% 38%;
+        --sidebar-primary: 354 62% 40%;
         --sidebar-primary-foreground: 0 0% 3.1%;
         --sidebar-accent: 0 0% 10%;
         --sidebar-accent-foreground: 40 20% 94%;
-        --sidebar-border: 43 20% 18%;
-        --sidebar-ring: 43 72% 38%;
+        --sidebar-border: 354 15% 15%;
+        --sidebar-ring: 354 62% 40%;
     }
 }
 
@@ -107,12 +107,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #B8860B33;
+    background: #A5273433;
     border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #B8860B66;
+    background: #A5273466;
 }
 
 /* Ink wash animation keyframes */
@@ -155,7 +155,7 @@ html {
     }
 }
 
-@keyframes goldPulse {
+@keyframes crimsonPulse {
 
     0%,
     100% {
@@ -179,6 +179,6 @@ html {
     animation: smokeRise 8s ease-out infinite;
 }
 
-.gold-pulse {
-    animation: goldPulse 4s ease-in-out infinite;
+.crimson-pulse {
+    animation: crimsonPulse 4s ease-in-out infinite;
 }

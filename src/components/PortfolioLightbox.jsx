@@ -39,7 +39,7 @@ export default function PortfolioLightbox({ items, currentIndex, onClose, onNavi
                 {/* Close */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 text-silk/40 hover:text-gold transition-colors z-10"
+                    className="absolute top-6 right-6 text-silk/40 hover:text-crimson transition-colors z-10"
                 >
                     <X size={28} strokeWidth={1} />
                 </button>
@@ -47,13 +47,13 @@ export default function PortfolioLightbox({ items, currentIndex, onClose, onNavi
                 {/* Navigation */}
                 <button
                     onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-                    className="absolute left-4 md:left-8 text-silk/30 hover:text-gold transition-colors z-10"
+                    className="absolute left-4 md:left-8 text-silk/30 hover:text-crimson transition-colors z-10"
                 >
                     <ChevronLeft size={36} strokeWidth={1} />
                 </button>
                 <button
                     onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                    className="absolute right-4 md:right-8 text-silk/30 hover:text-gold transition-colors z-10"
+                    className="absolute right-4 md:right-8 text-silk/30 hover:text-crimson transition-colors z-10"
                 >
                     <ChevronRight size={36} strokeWidth={1} />
                 </button>

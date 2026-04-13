@@ -15,14 +15,15 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)'
       },
       colors: {
-        gold: {
-          DEFAULT: '#B8860B',
-          light: '#D4AF37',
-          dark: '#8B6508',
-          muted: '#B8860B33',
+        crimson: {
+          DEFAULT: '#A52734',
+          light: '#C93545',
+          dark: '#8B2029',
+          muted: '#A5273433',
         },
         obsidian: '#080808',
         charcoal: '#121212',
+        'charcoal-canvas': '#141012',
         silk: '#F4F1EA',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
