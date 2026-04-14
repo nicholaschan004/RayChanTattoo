@@ -3,8 +3,8 @@ import { convertDriveUrl, fetchSheetCsv } from '../lib/sheets';
 
 const SETTINGS_CSV_URL = import.meta.env.VITE_SHEETS_SETTINGS_CSV;
 
-const FALLBACK_HERO = 'https://media.base44.com/images/public/69db3eb64a1058a506af8402/0c2e1b640_generated_3d671ad0.png';
-const FALLBACK_ARTIST = 'https://media.base44.com/images/public/69db3eb64a1058a506af8402/0c2e1b640_generated_3d671ad0.png';
+const FALLBACK_HERO = '';
+const FALLBACK_ARTIST = '';
 const FALLBACK_BIO = [
   'With over a decade of dedication to the craft, Ray specializes in Japanese traditional tattoo art — from bold Irezumi compositions to delicate fine-line work rooted in centuries of Eastern aesthetics.',
   'Each piece is custom-designed to flow with the client\'s natural anatomy, honoring the traditions of Japanese tattooing while embracing modern expression. No flash. No repeats. Every tattoo is a one-of-one collaboration.',

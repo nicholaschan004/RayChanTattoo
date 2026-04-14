@@ -1,15 +1,26 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useSiteSettings } from '../hooks/useSiteSettings';
 
 export default function HeroSection() {
   const { heroImage } = useSiteSettings();
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, -120]);
+  const rayX = useTransform(scrollYProgress, [0, 0.5], [0, -150]);
+  const chanX = useTransform(scrollYProgress, [0, 0.5], [0, 150]);
+
   const scrollTo = (href) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-obsidian">
+    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-obsidian">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <img
@@ -50,7 +61,10 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Center content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 text-center">
+      <motion.div
+        style={{ opacity: heroOpacity, y: heroY }}
+        className="relative z-10 h-full flex flex-col items-center justify-center px-6 text-center"
+      >
         {/* Gold rule line */}
         <motion.div
           initial={{ scaleX: 0 }}
@@ -60,16 +74,29 @@ export default function HeroSection() {
         />
 
         {/* Animated name */}
-        <div className="mb-8 overflow-hidden">
-          <motion.h1
-            initial={{ y: '100%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extralight tracking-[0.15em] md:tracking-[0.2em] text-silk whitespace-nowrap"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            RAY CHAN
-          </motion.h1>
+        <div className="mb-8 flex justify-center items-center gap-4 md:gap-8">
+          <motion.div style={{ x: rayX }} className="overflow-hidden pr-2">
+            <motion.h1
+              initial={{ y: '100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extralight tracking-[0.15em] md:tracking-[0.2em] text-silk whitespace-nowrap"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              RAY
+            </motion.h1>
+          </motion.div>
+          <motion.div style={{ x: chanX }} className="overflow-hidden pl-2">
+            <motion.h1
+              initial={{ y: '100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extralight tracking-[0.15em] md:tracking-[0.2em] text-silk whitespace-nowrap"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              CHAN
+            </motion.h1>
+          </motion.div>
         </div>
 
         {/* Tagline */}
@@ -128,7 +155,7 @@ export default function HeroSection() {
             className="w-[1px] h-8 bg-gradient-to-b from-crimson/50 to-transparent"
           />
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Bottom crimson line */}
       <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-crimson/30 to-transparent" />
