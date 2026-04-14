@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-
-const ARTIST_IMAGE = 'https://media.base44.com/images/public/69db3eb64a1058a506af8402/0c2e1b640_generated_3d671ad0.png';
+import { useSiteSettings } from '../hooks/useSiteSettings';
 
 export default function ArtistSection() {
+  const { artistImage, artistBio } = useSiteSettings();
   return (
     <section id="artist" className="relative py-32 bg-white/[0.02] overflow-hidden">
       {/* Background decorative kanji */}
@@ -22,7 +22,7 @@ export default function ArtistSection() {
           >
             <div className="aspect-[3/4] overflow-hidden relative">
               <img
-                src={ARTIST_IMAGE}
+                src={artistImage}
                 alt="Ray Chan — Tattoo Artist"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
@@ -46,19 +46,9 @@ export default function ArtistSection() {
             <div className="w-12 h-[0.5px] bg-crimson/50 mt-6 mb-8" />
 
             <div className="space-y-6 font-inter text-silk/40 text-sm tracking-wider leading-relaxed">
-              <p>
-                With over a decade of dedication to the craft, Ray specializes in Japanese traditional tattoo art —
-                from bold Irezumi compositions to delicate fine-line work rooted in centuries of Eastern aesthetics.
-              </p>
-              <p>
-                Each piece is custom-designed to flow with the client's natural anatomy, honoring the traditions
-                of Japanese tattooing while embracing modern expression. No flash. No repeats. Every tattoo is a
-                one-of-one collaboration.
-              </p>
-              <p>
-                Based in a private studio, Ray provides a focused, judgment-free environment where the art and
-                the individual come first.
-              </p>
+              {artistBio.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </div>
 
             <div className="mt-10 flex flex-wrap gap-8">

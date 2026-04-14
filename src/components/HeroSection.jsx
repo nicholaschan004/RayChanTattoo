@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-
-const HERO_IMAGE = 'https://media.base44.com/images/public/69db3eb64a1058a506af8402/0c2e1b640_generated_3d671ad0.png';
+import { useSiteSettings } from '../hooks/useSiteSettings';
 
 export default function HeroSection() {
+  const { heroImage } = useSiteSettings();
   const scrollTo = (href) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <img
-          src={HERO_IMAGE}
+          src={heroImage}
           alt="Japanese dragon tattoo masterwork"
           className="w-full h-full object-cover opacity-40"
         />

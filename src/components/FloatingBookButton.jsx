@@ -23,7 +23,7 @@ export default function FloatingBookButton() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.8, y: 20 }}
                     onClick={scrollToBooking}
-                    className="md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-gold rounded-full flex items-center justify-center shadow-lg shadow-gold/20"
+                    className="md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-crimson rounded-full flex items-center justify-center shadow-lg shadow-crimson/20"
                 >
                     <span className="font-serif text-obsidian text-lg">予</span>
                 </motion.button>

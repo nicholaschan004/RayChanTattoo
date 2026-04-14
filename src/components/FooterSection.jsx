@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Instagram, Mail, MapPin } from 'lucide-react';
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
 
 export default function FooterSection() {
   return (
@@ -16,9 +16,6 @@ export default function FooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="font-syne text-5xl font-extrabold text-silk mb-4">
-              <span className="text-crimson">R</span>
-            </h3>
             <p className="font-inter text-silk/30 text-sm tracking-wider leading-relaxed">
               Custom Japanese tattoo art.<br />
               Timeless ink. Modern expression.
@@ -61,24 +58,31 @@ export default function FooterSection() {
             <h4 className="font-inter text-[10px] tracking-[0.3em] uppercase text-crimson/50 mb-6">Connect</h4>
             <div className="space-y-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/raychantattoo?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-silk/30 hover:text-crimson transition-colors duration-500"
               >
                 <Instagram size={16} strokeWidth={1.5} />
-                <span className="font-inter text-sm tracking-wider">@irezumi.r</span>
+                <span className="font-inter text-sm tracking-wider">@raychantattoo</span>
               </a>
               <a
-                href="mailto:studio@irezumi-r.com"
+                href="mailto:Raychantattoo@gmail.com"
                 className="flex items-center gap-3 text-silk/30 hover:text-crimson transition-colors duration-500"
               >
                 <Mail size={16} strokeWidth={1.5} />
-                <span className="font-inter text-sm tracking-wider">studio@irezumi-r.com</span>
+                <span className="font-inter text-sm tracking-wider">Raychantattoo@gmail.com</span>
               </a>
-              <div className="flex items-center gap-3 text-silk/20">
+              <a
+                href="tel:9253916292"
+                className="flex items-center gap-3 text-silk/30 hover:text-crimson transition-colors duration-500"
+              >
+                <Phone size={16} strokeWidth={1.5} />
+                <span className="font-inter text-sm tracking-wider">9253916292</span>
+              </a>
+              <div className="flex items-center gap-3 text-silk/30">
                 <MapPin size={16} strokeWidth={1.5} />
-                <span className="font-inter text-sm tracking-wider">Private Studio · By Appointment Only</span>
+                <span className="font-inter text-sm tracking-wider">Hilltop Richmond, CA</span>
               </div>
             </div>
           </motion.div>
@@ -87,7 +91,7 @@ export default function FooterSection() {
         {/* Bottom bar */}
         <div className="border-t border-silk/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-inter text-[11px] text-silk/15 tracking-wider">
-            © {new Date().getFullYear()} Irezumi Archive. All rights reserved.
+            © {new Date().getFullYear()} Ray Chan Tattoo. All rights reserved.
           </p>
           <p className="font-serif text-silk/10 text-sm">
             入墨 — The way of ink

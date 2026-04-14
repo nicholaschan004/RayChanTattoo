@@ -1,80 +1,10 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Loader2, Upload, X, Check } from 'lucide-react';
-import { toast } from 'sonner';
+import { CalendarDays, FileText, ExternalLink } from 'lucide-react';
 
-const placements = ['Full Sleeve', 'Half Sleeve', 'Back Piece', 'Chest', 'Ribs', 'Forearm', 'Upper Arm', 'Thigh', 'Calf', 'Other'];
-const sizes = ['Small (2-4 inches)', 'Medium (5-8 inches)', 'Large (9-12 inches)', 'Extra Large (Full panel/sleeve)'];
+const CALENDAR_EMBED_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2sEVCmvOifHOJtFKWcnfdNbL4B0q0JSO7p0NDtlq2Lx3L5ucmcwO4m7F2snW9spLS0YTK8JEk3?gv=true';
+const FORM_URL = import.meta.env.VITE_GOOGLE_FORM_URL;
 
 export default function BookingSection() {
-  const [step, setStep] = useState(0);
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [uploadingFile, setUploadingFile] = useState(false);
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    tattoo_idea: '',
-    placement: '',
-    size: '',
-    reference_images: [],
-    preferred_date: '',
-  });
-
-  const update = (field, value) => setForm((prev) => ({ ...prev, [field]: value }));
-
-  const handleFileUpload = (e) => {
-    const files = Array.from(e.target.files);
-    if (!files.length) return;
-    setUploadingFile(true);
-    const urls = files.map((file) => URL.createObjectURL(file));
-    update('reference_images', [...form.reference_images, ...urls]);
-    setUploadingFile(false);
-  };
-
-  const removeImage = (idx) => {
-    update('reference_images', form.reference_images.filter((_, i) => i !== idx));
-  };
-
-  const handleSubmit = async () => {
-    if (!form.name || !form.email || !form.tattoo_idea || !form.placement || !form.size) {
-      toast.error('Please fill in all required fields');
-      return;
-    }
-    setSubmitting(true);
-    // Simulate submission delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSubmitting(false);
-    setSubmitted(true);
-  };
-
-  const stepTitles = ['Your Details', 'Your Vision', 'Schedule'];
-
-  if (submitted) {
-    return (
-      <section id="booking" className="relative py-32 bg-white/[0.02]">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="space-y-6"
-          >
-            <div className="w-16 h-16 rounded-full border border-crimson/40 flex items-center justify-center mx-auto">
-              <Check className="text-crimson" size={28} strokeWidth={1.5} />
-            </div>
-            <h2 className="font-syne text-3xl md:text-4xl font-bold text-silk uppercase tracking-tight">
-              Request Received
-            </h2>
-            <p className="font-inter text-silk/40 text-sm tracking-wider leading-relaxed max-w-md mx-auto">
-              All bookings are reviewed and confirmed manually. You will receive a response within 48 hours.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="booking" className="relative py-32 bg-white/[0.02] overflow-hidden">
       {/* Decorative kanji */}
@@ -83,242 +13,122 @@ export default function BookingSection() {
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-        <div className="grid lg:grid-cols-5 gap-16 lg:gap-20">
-          {/* Left sticky panel */}
-          <div className="lg:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="lg:sticky lg:top-32"
-            >
-              <span className="font-serif text-crimson/40 text-sm tracking-wider">予約</span>
-              <h2 className="font-syne text-4xl md:text-5xl font-bold tracking-tight text-silk mt-2 uppercase">
-                Book Your<br />Session
-              </h2>
-              <div className="w-12 h-[0.5px] bg-crimson/50 mt-6 mb-8" />
-              <p className="font-inter text-silk/40 text-sm tracking-wider leading-relaxed">
-                Begin the ritual. Share your vision and let's create something timeless together.
-              </p>
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20 text-center"
+        >
+          <span className="font-serif text-crimson/40 text-sm tracking-wider">予約</span>
+          <h2 className="font-syne text-4xl md:text-5xl font-bold tracking-tight text-silk mt-2 uppercase">
+            Book Your Session
+          </h2>
+          <div className="w-12 h-[0.5px] bg-crimson/50 mt-6 mb-8 mx-auto" />
+          <p className="font-inter text-silk/40 text-sm tracking-wider leading-relaxed max-w-lg mx-auto">
+            Share your vision first so Ray can come prepared, then pick a time for your consultation.
+          </p>
+        </motion.div>
 
-              {/* Step indicators */}
-              <div className="mt-12 space-y-4">
-                {stepTitles.map((title, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setStep(i)}
-                    className={`flex items-center gap-4 transition-all duration-500 ${step === i ? 'opacity-100' : 'opacity-30 hover:opacity-50'
-                      }`}
-                  >
-                    <div className={`w-8 h-8 flex items-center justify-center border text-xs font-inter transition-all ${step === i ? 'border-crimson text-crimson' : 'border-silk/20 text-silk/40'
-                      }`}>
-                      {i + 1}
-                    </div>
-                    <span className="font-inter text-xs tracking-[0.15em] uppercase text-silk">{title}</span>
-                  </button>
-                ))}
-              </div>
-
-              <p className="mt-12 font-inter text-silk/20 text-[11px] tracking-wider italic">
-                All bookings are reviewed and confirmed manually
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Right form panel */}
+        {/* Two-step cards */}
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+          {/* Step 1 — Submit tattoo details */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-3"
+            transition={{ duration: 0.6 }}
+            className="border border-silk/10 bg-white/[0.02] p-8 md:p-10 flex flex-col"
           >
-            <div className="space-y-10">
-              {step === 0 && (
-                <div className="space-y-8">
-                  <InputField label="Full Name" value={form.name} onChange={(v) => update('name', v)} required />
-                  <InputField label="Email Address" type="email" value={form.email} onChange={(v) => update('email', v)} required />
-                  <InputField label="Phone Number" value={form.phone} onChange={(v) => update('phone', v)} />
-                </div>
-              )}
-
-              {step === 1 && (
-                <div className="space-y-8">
-                  <div>
-                    <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-                      Tattoo Idea <span className="text-crimson">*</span>
-                    </label>
-                    <textarea
-                      value={form.tattoo_idea}
-                      onChange={(e) => update('tattoo_idea', e.target.value)}
-                      rows={5}
-                      placeholder="Describe your vision — the story, elements, symbolism..."
-                      className="w-full bg-transparent border-b border-silk/10 focus:border-crimson/50 text-silk font-inter text-sm tracking-wide pb-3 placeholder:text-silk/15 outline-none resize-none transition-colors duration-500"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-                      Body Placement <span className="text-crimson">*</span>
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {placements.map((p) => (
-                        <button
-                          key={p}
-                          onClick={() => update('placement', p)}
-                          className={`px-4 py-2 border text-xs tracking-wider font-inter transition-all duration-300 ${form.placement === p
-                              ? 'border-crimson bg-crimson/10 text-crimson'
-                              : 'border-silk/10 text-silk/30 hover:border-silk/20'
-                            }`}
-                        >
-                          {p}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-                      Approximate Size <span className="text-crimson">*</span>
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {sizes.map((s) => (
-                        <button
-                          key={s}
-                          onClick={() => update('size', s)}
-                          className={`px-4 py-2 border text-xs tracking-wider font-inter transition-all duration-300 ${form.size === s
-                              ? 'border-crimson bg-crimson/10 text-crimson'
-                              : 'border-silk/10 text-silk/30 hover:border-silk/20'
-                            }`}
-                        >
-                          {s}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Reference images */}
-                  <div>
-                    <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-                      Reference Images
-                    </label>
-                    <label className="flex flex-col items-center justify-center w-full h-36 border border-dashed border-silk/10 hover:border-crimson/30 cursor-pointer transition-all duration-500 group">
-                      <input type="file" accept="image/*" multiple onChange={handleFileUpload} className="hidden" />
-                      {uploadingFile ? (
-                        <Loader2 size={20} className="text-crimson animate-spin" />
-                      ) : (
-                        <>
-                          <Upload size={20} className="text-silk/20 group-hover:text-crimson/50 transition-colors mb-2" strokeWidth={1.5} />
-                          <span className="font-inter text-[10px] tracking-wider text-silk/20 group-hover:text-silk/40 transition-colors">
-                            Drop references here
-                          </span>
-                        </>
-                      )}
-                    </label>
-                    {form.reference_images.length > 0 && (
-                      <div className="flex gap-3 mt-4 flex-wrap">
-                        {form.reference_images.map((url, i) => (
-                          <div key={i} className="relative w-16 h-16 group">
-                            <img src={url} alt="Reference" className="w-full h-full object-cover" />
-                            <button
-                              onClick={() => removeImage(i)}
-                              className="absolute -top-1 -right-1 w-5 h-5 bg-obsidian border border-silk/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                            >
-                              <X size={10} className="text-silk/60" />
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {step === 2 && (
-                <div className="space-y-8">
-                  <InputField
-                    label="Preferred Date"
-                    type="date"
-                    value={form.preferred_date}
-                    onChange={(v) => update('preferred_date', v)}
-                  />
-                  <div className="pt-4 border-t border-silk/5">
-                    <h4 className="font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">Summary</h4>
-                    <div className="space-y-3 font-inter text-sm text-silk/50">
-                      <SummaryRow label="Name" value={form.name} />
-                      <SummaryRow label="Email" value={form.email} />
-                      <SummaryRow label="Idea" value={form.tattoo_idea} />
-                      <SummaryRow label="Placement" value={form.placement} />
-                      <SummaryRow label="Size" value={form.size} />
-                      {form.preferred_date && <SummaryRow label="Date" value={form.preferred_date} />}
-                      {form.reference_images.length > 0 && <SummaryRow label="References" value={`${form.reference_images.length} image(s)`} />}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Navigation */}
-              <div className="flex justify-between items-center pt-8">
-                {step > 0 ? (
-                  <button
-                    onClick={() => setStep(step - 1)}
-                    className="font-inter text-xs tracking-[0.15em] uppercase text-silk/30 hover:text-silk/60 transition-colors"
-                  >
-                    ← Back
-                  </button>
-                ) : <div />}
-
-                {step < 2 ? (
-                  <button
-                    onClick={() => setStep(step + 1)}
-                    className="px-8 py-3 border border-crimson/40 text-crimson font-inter text-xs tracking-[0.15em] uppercase hover:bg-crimson hover:text-obsidian transition-all duration-500"
-                  >
-                    Continue →
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleSubmit}
-                    disabled={submitting}
-                    className="px-10 py-3.5 bg-crimson text-obsidian font-inter text-xs tracking-[0.15em] uppercase font-medium hover:bg-crimson-light transition-all duration-500 disabled:opacity-50 flex items-center gap-2"
-                  >
-                    {submitting && <Loader2 size={14} className="animate-spin" />}
-                    Request Appointment
-                  </button>
-                )}
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-10 h-10 shrink-0 flex items-center justify-center border border-crimson text-crimson font-inter text-xs">
+                1
               </div>
+              <div className="flex items-center gap-2">
+                <FileText size={16} className="text-crimson" strokeWidth={1.5} />
+                <h3 className="font-syne text-lg font-bold text-silk uppercase tracking-wide">
+                  Share Your Vision
+                </h3>
+              </div>
+            </div>
+
+            <p className="font-inter text-silk/40 text-xs tracking-wider leading-relaxed mb-8">
+              Tell Ray about your tattoo idea, upload reference photos, and share placement details. This helps him prepare for your consultation.
+            </p>
+
+            <div className="mt-auto">
+              {FORM_URL ? (
+                <a
+                  href={FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-8 py-3.5 bg-crimson text-obsidian font-inter text-xs tracking-[0.15em] uppercase font-medium hover:bg-crimson-light transition-all duration-500 group"
+                >
+                  <FileText size={14} strokeWidth={1.5} />
+                  Submit Tattoo Request
+                  <ExternalLink size={11} className="opacity-50 group-hover:opacity-80 transition-opacity" strokeWidth={1.5} />
+                </a>
+              ) : (
+                <span className="inline-flex items-center gap-3 px-8 py-3.5 border border-silk/10 text-silk/30 font-inter text-xs tracking-[0.15em] uppercase cursor-default">
+                  <FileText size={14} strokeWidth={1.5} />
+                  Coming Soon
+                </span>
+              )}
+            </div>
+          </motion.div>
+
+          {/* Step 2 — Book consultation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="border border-silk/10 bg-white/[0.02] p-8 md:p-10 flex flex-col"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-10 h-10 shrink-0 flex items-center justify-center border border-silk/20 text-silk/40 font-inter text-xs">
+                2
+              </div>
+              <div className="flex items-center gap-2">
+                <CalendarDays size={16} className="text-silk/40" strokeWidth={1.5} />
+                <h3 className="font-syne text-lg font-bold text-silk/50 uppercase tracking-wide">
+                  Book a Consultation
+                </h3>
+              </div>
+            </div>
+
+            <p className="font-inter text-silk/40 text-xs tracking-wider leading-relaxed mb-8">
+              Once you've submitted your request, check Ray's availability and book a consultation to discuss your piece.
+            </p>
+
+            <div className="mt-auto">
+              <a
+                href={CALENDAR_EMBED_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-3.5 border border-crimson/40 text-crimson font-inter text-xs tracking-[0.15em] uppercase hover:bg-crimson hover:text-obsidian transition-all duration-500 group"
+              >
+                <CalendarDays size={14} strokeWidth={1.5} />
+                View Availability
+                <ExternalLink size={11} className="opacity-40 group-hover:opacity-70 transition-opacity" strokeWidth={1.5} />
+              </a>
             </div>
           </motion.div>
         </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12 text-center font-inter text-silk/20 text-[11px] tracking-wider italic"
+        >
+          All bookings are reviewed and confirmed manually within 48 hours
+        </motion.p>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-[0.5px] bg-gradient-to-r from-transparent via-crimson/20 to-transparent" />
     </section>
-  );
-}
-
-function InputField({ label, type = 'text', value, onChange, required }) {
-  return (
-    <div>
-      <label className="block font-inter text-[10px] tracking-[0.25em] uppercase text-silk/40 mb-4">
-        {label} {required && <span className="text-crimson">*</span>}
-      </label>
-      <input
-        type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-transparent border-b border-silk/10 focus:border-crimson/50 text-silk font-inter text-sm tracking-wide pb-3 placeholder:text-silk/15 outline-none transition-colors duration-500"
-      />
-    </div>
-  );
-}
-
-function SummaryRow({ label, value }) {
-  if (!value) return null;
-  return (
-    <div className="flex justify-between gap-4">
-      <span className="text-silk/30 shrink-0">{label}</span>
-      <span className="text-silk/60 text-right truncate">{value}</span>
-    </div>
   );
 }

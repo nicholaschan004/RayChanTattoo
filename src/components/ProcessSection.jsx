@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Send, MessageCircle, PenTool, Sparkles } from 'lucide-react';
 
 const steps = [
   {
@@ -7,28 +6,24 @@ const steps = [
     digit: '01',
     title: 'Submit Idea',
     desc: 'Share your vision, references, and placement preferences through our booking form.',
-    icon: Send,
   },
   {
     num: '二',
     digit: '02',
     title: 'Consultation',
     desc: 'We discuss your concept in depth — symbolism, sizing, composition, and flow with your body.',
-    icon: MessageCircle,
   },
   {
     num: '三',
     digit: '03',
     title: 'Design Approval',
     desc: 'A custom design is crafted for you. Revisions continue until every line is perfect.',
-    icon: PenTool,
   },
   {
     num: '四',
     digit: '04',
     title: 'Tattoo Session',
     desc: 'The ritual begins. Precision meets patience as your vision comes to life in ink.',
-    icon: Sparkles,
   },
 ];
 
@@ -67,7 +62,6 @@ export default function ProcessSection() {
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[0.5px] bg-gradient-to-b from-crimson/40 via-crimson/20 to-transparent" />
 
           {steps.map((step, i) => {
-            const Icon = step.icon;
             const isLeft = i % 2 === 0;
 
             return (
@@ -90,7 +84,6 @@ export default function ProcessSection() {
                   <div className="flex items-center gap-3 mb-3" style={{ justifyContent: isLeft ? undefined : undefined }}>
                     <span className="font-serif text-3xl text-crimson/30">{step.num}</span>
                     <div className={`flex items-center gap-2 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
-                      <Icon size={16} className="text-crimson/60" strokeWidth={1.5} />
                       <h3 className="font-syne text-lg font-semibold tracking-[0.1em] uppercase text-silk">
                         {step.title}
                       </h3>
