@@ -36,11 +36,6 @@ export default function Navigation() {
           }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-          <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="hover:opacity-80 transition-opacity">
-            <img src="/logo-200.png" alt="Ray Chan Tattoo" className="h-10 w-auto" />
-          </a>
-
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
