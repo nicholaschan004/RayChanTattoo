@@ -20,12 +20,14 @@ export default function ArtistSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-[3/4] overflow-hidden relative">
-              <img
-                src={artistImage}
-                alt="Ray Chan — Tattoo Artist"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              />
+            <div className="aspect-[3/4] overflow-hidden relative bg-silk/5">
+              {artistImage && (
+                <img
+                  src={artistImage}
+                  alt="Ray Chan — Tattoo Artist"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
+              )}
               {/* Gold corner accents */}
               <div className="absolute top-4 left-4 w-12 h-12 border-t border-l border-crimson/30" />
               <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-crimson/30" />
@@ -53,9 +55,8 @@ export default function ArtistSection() {
 
             <div className="mt-10 flex flex-wrap gap-8">
               {[
-                { label: 'Years Experience', value: '12+' },
-                { label: 'Custom Pieces', value: '2,000+' },
-                { label: 'Specialty', value: 'Japanese' },
+                { label: 'Years Experience', value: '5+' },
+                { label: 'Specialty', value: 'Neo-Japanese' },
               ].map((stat) => (
                 <div key={stat.label}>
                   <div className="font-syne text-2xl font-bold text-crimson">{stat.value}</div>

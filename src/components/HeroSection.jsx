@@ -23,11 +23,13 @@ export default function HeroSection() {
     <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-obsidian">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Japanese dragon tattoo masterwork"
-          className="w-full h-full object-cover opacity-40"
-        />
+        {heroImage && (
+          <img
+            src={heroImage}
+            alt=""
+            className="w-full h-full object-cover opacity-40"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/30 to-obsidian" />
       </div>
 
@@ -65,12 +67,14 @@ export default function HeroSection() {
         style={{ opacity: heroOpacity, y: heroY }}
         className="relative z-10 h-full flex flex-col items-center justify-center px-6 text-center"
       >
-        {/* Gold rule line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
+        {/* Logo */}
+        <motion.img
+          src="/logo-200.png"
+          alt="Ray Chan logo"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 1.5, ease: 'easeOut' }}
-          className="w-16 h-[0.5px] bg-crimson/60 mb-8"
+          className="w-24 h-24 object-contain mb-8"
         />
 
         {/* Animated name */}
@@ -86,7 +90,7 @@ export default function HeroSection() {
               RAY
             </motion.h1>
           </motion.div>
-          <motion.div style={{ x: chanX }} className="overflow-hidden pl-2">
+<motion.div style={{ x: chanX }} className="overflow-hidden pl-2">
             <motion.h1
               initial={{ y: '100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -117,7 +121,7 @@ export default function HeroSection() {
           transition={{ delay: 1, duration: 1 }}
           className="font-serif text-lg md:text-xl text-crimson/70 mb-12"
         >
-          Custom Japanese Tattoo Art
+          Neo-Japanese Tattoo
         </motion.p>
 
         {/* CTA buttons */}
