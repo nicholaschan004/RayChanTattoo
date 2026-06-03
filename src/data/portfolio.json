@@ -1,0 +1,85 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "label": "All Works",
+      "kanji": "全"
+    },
+    {
+      "id": "sleeves",
+      "label": "Sleeves",
+      "kanji": "袖"
+    },
+    {
+      "id": "blackgrey",
+      "label": "Black & Grey",
+      "kanji": "墨"
+    },
+    {
+      "id": "traditional",
+      "label": "Traditional",
+      "kanji": "伝統"
+    },
+    {
+      "id": "custom",
+      "label": "Custom",
+      "kanji": "独自"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "src": "/portfolio/01.webp",
+      "full": "/portfolio/01-full.webp",
+      "category": "custom"
+    },
+    {
+      "id": 2,
+      "src": "/portfolio/02.webp",
+      "full": "/portfolio/02-full.webp",
+      "category": "sleeves"
+    },
+    {
+      "id": 3,
+      "src": "/portfolio/03.webp",
+      "full": "/portfolio/03-full.webp",
+      "category": "blackgrey"
+    },
+    {
+      "id": 4,
+      "src": "/portfolio/04.webp",
+      "full": "/portfolio/04-full.webp",
+      "category": "sleeves"
+    },
+    {
+      "id": 5,
+      "src": "/portfolio/05.webp",
+      "full": "/portfolio/05-full.webp",
+      "category": "custom"
+    },
+    {
+      "id": 6,
+      "src": "/portfolio/06.webp",
+      "full": "/portfolio/06-full.webp",
+      "category": "custom"
+    },
+    {
+      "id": 7,
+      "src": "/portfolio/07.webp",
+      "full": "/portfolio/07-full.webp",
+      "category": "custom"
+    },
+    {
+      "id": 8,
+      "src": "/portfolio/08.webp",
+      "full": "/portfolio/08-full.webp",
+      "category": "custom"
+    },
+    {
+      "id": 9,
+      "src": "/portfolio/09.webp",
+      "full": "/portfolio/09-full.webp",
+      "category": "custom"
+    }
+  ]
+}

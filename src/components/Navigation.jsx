@@ -32,7 +32,7 @@ export default function Navigation() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'bg-obsidian/90 backdrop-blur-md border-b border-crimson/10' : ''
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'bg-obsidian/95 border-b border-crimson/10 md:bg-obsidian/90 md:backdrop-blur-md' : ''
           }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
@@ -75,7 +75,7 @@ export default function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-obsidian/98 backdrop-blur-xl flex flex-col items-center justify-center gap-10"
+            className="fixed inset-0 z-40 bg-obsidian flex flex-col items-center justify-center gap-10"
           >
             {navLinks.map((link, i) => (
               <motion.button

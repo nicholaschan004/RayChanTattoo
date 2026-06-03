@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PortfolioLightbox from './PortfolioLightbox';
 import { usePortfolioData } from '../hooks/usePortfolioData';
+import { sizedImageUrl } from '../lib/sheets';
 
 export default function PortfolioSection() {
   const { items, categories, loading } = usePortfolioData();
@@ -83,16 +84,15 @@ export default function PortfolioSection() {
                 onClick={() => setLightboxIndex(i)}
               >
                 <img
-                  src={item.src}
-                  alt={item.title}
+                  src={sizedImageUrl(item.src, 700)}
+                  alt="Tattoo by Ray Chan"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-obsidian/0 group-hover:bg-obsidian/60 transition-all duration-500 flex items-end">
                   <div className="p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                    <span className="font-serif text-crimson/60 text-xs">{categories.find(c => c.id === item.category)?.kanji}</span>
-                    <h3 className="font-syne text-silk text-base font-semibold tracking-wide uppercase mt-1">
-                      {item.title}
-                    </h3>
+                    <span className="block font-serif text-crimson/60 text-xs">{categories.find(c => c.id === item.category)?.kanji}</span>
                     <span className="inline-block mt-2 text-crimson text-[10px] tracking-[0.3em] uppercase font-inter">
                       View Piece →
                     </span>

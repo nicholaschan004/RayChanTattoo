@@ -40,8 +40,9 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/30 to-obsidian" />
       </div>
 
-      {/* Animated ink-wash overlay shapes */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Animated ink-wash overlay shapes (desktop only — animating a large
+          blur is GPU-expensive and janky on mobile) */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full bg-crimson/5 blur-[120px] ink-flow" />
         <div className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] rounded-full bg-crimson/3 blur-[100px] ink-flow-delayed" />
       </div>

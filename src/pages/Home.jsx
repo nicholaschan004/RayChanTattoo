@@ -11,7 +11,10 @@ export default function Home() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
@@ -24,6 +27,13 @@ export default function Home() {
       if (containerRef.current) {
         containerRef.current.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
       }
+    };
+
+    // Coalesce scroll events to at most one style write per animation frame.
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

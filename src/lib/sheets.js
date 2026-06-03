@@ -11,6 +11,21 @@ export function convertDriveUrl(url) {
 }
 
 /**
+ * Request a resized version of an image to avoid shipping full-resolution
+ * originals to the browser. Google user-content URLs support a `=w{width}`
+ * sizing suffix that returns a scaled thumbnail (much smaller/faster). Other
+ * URLs are returned unchanged.
+ */
+export function sizedImageUrl(url, width) {
+  if (!url) return '';
+  if (url.includes('googleusercontent.com')) {
+    const base = url.split('=')[0];
+    return `${base}=w${width}`;
+  }
+  return url;
+}
+
+/**
  * Parse a single CSV line, handling quoted fields with commas.
  */
 function parseCSVLine(line) {

@@ -1,6 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { sizedImageUrl } from '../lib/sheets';
 
 export default function PortfolioLightbox({ items, currentIndex, onClose, onNavigate }) {
     const item = items[currentIndex];
@@ -33,7 +34,7 @@ export default function PortfolioLightbox({ items, currentIndex, onClose, onNavi
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[100] bg-obsidian/98 backdrop-blur-xl flex items-center justify-center"
+                className="fixed inset-0 z-[100] bg-obsidian/98 flex items-center justify-center"
                 onClick={onClose}
             >
                 {/* Close */}
@@ -69,12 +70,12 @@ export default function PortfolioLightbox({ items, currentIndex, onClose, onNavi
                     onClick={(e) => e.stopPropagation()}
                 >
                     <img
-                        src={item.src}
-                        alt={item.title}
+                        src={sizedImageUrl(item.full || item.src, 1600)}
+                        alt="Tattoo by Ray Chan"
+                        decoding="async"
                         className="max-w-full max-h-[80vh] object-contain"
                     />
                     <div className="mt-4 text-center">
-                        <h3 className="font-syne text-silk text-lg tracking-[0.1em] uppercase">{item.title}</h3>
                         <span className="font-inter text-silk/30 text-xs tracking-wider">
                             {currentIndex + 1} / {items.length}
                         </span>

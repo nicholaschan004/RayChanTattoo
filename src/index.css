@@ -183,6 +183,17 @@ html {
     animation: crimsonPulse 4s ease-in-out infinite;
 }
 
+/* Honor user/OS reduced-motion preference: stop the looping decorative animations */
+@media (prefers-reduced-motion: reduce) {
+
+    .ink-flow,
+    .ink-flow-delayed,
+    .smoke-rise,
+    .crimson-pulse {
+        animation: none;
+    }
+}
+
 .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
