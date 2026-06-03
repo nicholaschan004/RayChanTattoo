@@ -34,13 +34,13 @@ export default function PortfolioLightbox({ items, currentIndex, onClose, onNavi
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[100] bg-obsidian/98 flex items-center justify-center"
+                className="fixed inset-0 z-[100] bg-obsidian flex items-center justify-center"
                 onClick={onClose}
             >
                 {/* Close */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 text-silk/40 hover:text-crimson transition-colors z-10"
+                    className="absolute top-6 right-6 text-silk/70 hover:text-crimson transition-colors z-10"
                 >
                     <X size={28} strokeWidth={1} />
                 </button>
