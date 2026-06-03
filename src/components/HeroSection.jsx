@@ -146,20 +146,6 @@ export default function HeroSection() {
             Book Appointment
           </button>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          {...fade}
-          transition={t(0.28)}
-          className="absolute bottom-10 flex flex-col items-center gap-3"
-        >
-          <span className="font-inter text-[10px] tracking-[0.3em] uppercase text-silk/30">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-[1px] h-8 bg-gradient-to-b from-crimson/50 to-transparent"
-          />
-        </motion.div>
       </motion.div>
 
       {/* Bottom crimson line */}
