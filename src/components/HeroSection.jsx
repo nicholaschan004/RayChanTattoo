@@ -1,10 +1,16 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useSiteSettings } from '../hooks/useSiteSettings';
 
 export default function HeroSection() {
-  const { heroImage } = useSiteSettings();
   const sectionRef = useRef(null);
+  const bgRef = useRef(null);
+  const [bgLoaded, setBgLoaded] = useState(false);
+
+  // Local image is preloaded in index.html; if it's already cached when we
+  // mount, the load event won't fire, so check `complete` to reveal it.
+  useEffect(() => {
+    if (bgRef.current?.complete) setBgLoaded(true);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
@@ -23,13 +29,17 @@ export default function HeroSection() {
     <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-obsidian">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        {heroImage && (
-          <img
-            src={heroImage}
-            alt=""
-            className="w-full h-full object-cover opacity-40"
-          />
-        )}
+        {/* Gradient base paints instantly so the hero is never blank */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(165,39,52,0.15),rgba(8,8,8,1)_70%)]" />
+        <img
+          ref={bgRef}
+          src="/hero.webp"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          onLoad={() => setBgLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${bgLoaded ? 'opacity-40' : 'opacity-0'}`}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/30 to-obsidian" />
       </div>
 
@@ -69,7 +79,7 @@ export default function HeroSection() {
       >
         {/* Logo */}
         <motion.img
-          src="/logo-200.png"
+          src="/logo-hd.png"
           alt="Ray Chan logo"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
