@@ -50,12 +50,6 @@ export default function Navigation() {
                 {link.label}
               </button>
             ))}
-            <button
-              onClick={() => scrollTo('#booking')}
-              className="ml-4 px-6 py-2 border border-crimson/40 text-crimson text-xs tracking-[0.15em] uppercase font-inter hover:bg-crimson hover:text-obsidian transition-all duration-500"
-            >
-              Book Session
-            </button>
           </div>
 
           {/* Mobile menu button */}
