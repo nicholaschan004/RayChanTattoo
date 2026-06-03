@@ -74,7 +74,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 1.5, ease: 'easeOut' }}
-          className="w-24 h-24 object-contain mb-8"
+          className="w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain mb-8"
         />
 
         {/* Animated name */}
