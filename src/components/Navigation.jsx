@@ -86,15 +86,6 @@ export default function Navigation() {
                 </span>
               </motion.button>
             ))}
-            <motion.button
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              onClick={() => scrollTo('#booking')}
-              className="mt-6 px-10 py-3 border border-crimson/40 text-crimson text-sm tracking-[0.15em] uppercase font-inter hover:bg-crimson hover:text-obsidian transition-all duration-500"
-            >
-              Book Session
-            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>
