@@ -31,7 +31,7 @@ export default function Navigation() {
       <motion.nav
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'bg-obsidian/90 backdrop-blur-md border-b border-crimson/10' : ''
           }`}
       >

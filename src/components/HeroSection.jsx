@@ -1,16 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function HeroSection() {
   const sectionRef = useRef(null);
-  const bgRef = useRef(null);
-  const [bgLoaded, setBgLoaded] = useState(false);
-
-  // Local image is preloaded in index.html; if it's already cached when we
-  // mount, the load event won't fire, so check `complete` to reveal it.
-  useEffect(() => {
-    if (bgRef.current?.complete) setBgLoaded(true);
-  }, []);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
@@ -19,6 +11,13 @@ export default function HeroSection() {
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, -120]);
   const rayX = useTransform(scrollYProgress, [0, 0.5], [0, -150]);
   const chanX = useTransform(scrollYProgress, [0, 0.5], [0, 150]);
+
+  // Subtle, quick fade-in for the hero content (opacity only, barely staggered).
+  const fade = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+  };
+  const t = (delay = 0) => ({ duration: 0.7, ease: 'easeOut', delay });
 
   const scrollTo = (href) => {
     const el = document.querySelector(href);
@@ -32,13 +31,11 @@ export default function HeroSection() {
         {/* Gradient base paints instantly so the hero is never blank */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(165,39,52,0.15),rgba(8,8,8,1)_70%)]" />
         <img
-          ref={bgRef}
           src="/hero.webp"
           alt=""
           fetchPriority="high"
           decoding="async"
-          onLoad={() => setBgLoaded(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${bgLoaded ? 'opacity-40' : 'opacity-0'}`}
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/30 to-obsidian" />
       </div>
@@ -53,7 +50,7 @@ export default function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.15 }}
-        transition={{ delay: 2, duration: 2 }}
+        transition={t(0.15)}
         className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2"
       >
         <span className="font-serif text-[120px] text-silk writing-mode-vertical" style={{ writingMode: 'vertical-rl' }}>
@@ -64,7 +61,7 @@ export default function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.15 }}
-        transition={{ delay: 2.5, duration: 2 }}
+        transition={t(0.15)}
         className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2"
       >
         <span className="font-serif text-[120px] text-silk" style={{ writingMode: 'vertical-rl' }}>
@@ -81,30 +78,27 @@ export default function HeroSection() {
         <motion.img
           src="/logo-hd.png"
           alt="Ray Chan logo"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 1.5, ease: 'easeOut' }}
+          {...fade}
+          transition={t(0)}
           className="w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain mb-8"
         />
 
-        {/* Animated name */}
+        {/* Name */}
         <div className="mb-8 flex justify-center items-center gap-4 md:gap-8">
           <motion.div style={{ x: rayX }} className="overflow-hidden pr-2">
             <motion.h1
-              initial={{ y: '100%', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+              {...fade}
+              transition={t(0.05)}
               className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extralight tracking-[0.15em] md:tracking-[0.2em] text-silk whitespace-nowrap"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               RAY
             </motion.h1>
           </motion.div>
-<motion.div style={{ x: chanX }} className="overflow-hidden pl-2">
+          <motion.div style={{ x: chanX }} className="overflow-hidden pl-2">
             <motion.h1
-              initial={{ y: '100%', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+              {...fade}
+              transition={t(0.05)}
               className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extralight tracking-[0.15em] md:tracking-[0.2em] text-silk whitespace-nowrap"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
@@ -115,9 +109,8 @@ export default function HeroSection() {
 
         {/* Tagline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 1 }}
+          {...fade}
+          transition={t(0.12)}
           className="font-inter text-xs md:text-sm tracking-[0.35em] uppercase text-silk/60 mb-3"
         >
           Timeless Ink
@@ -126,9 +119,8 @@ export default function HeroSection() {
         </motion.p>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 1 }}
+          {...fade}
+          transition={t(0.16)}
           className="font-serif text-lg md:text-xl text-crimson/70 mb-12"
         >
           Neo-Japanese Tattoo
@@ -136,9 +128,8 @@ export default function HeroSection() {
 
         {/* CTA buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 1 }}
+          {...fade}
+          transition={t(0.2)}
           className="flex flex-col sm:flex-row gap-4"
         >
           <button
@@ -157,9 +148,8 @@ export default function HeroSection() {
 
         {/* Scroll indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
+          {...fade}
+          transition={t(0.28)}
           className="absolute bottom-10 flex flex-col items-center gap-3"
         >
           <span className="font-inter text-[10px] tracking-[0.3em] uppercase text-silk/30">Scroll</span>
