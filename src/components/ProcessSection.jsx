@@ -29,7 +29,7 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="relative py-32 overflow-hidden">
+    <section id="process" className="relative py-24 md:py-32 scroll-mt-24 overflow-hidden">
       {/* Background decorative */}
       <div className="hidden lg:block absolute left-10 top-1/2 -translate-y-1/2 opacity-[0.03]">
         <span className="font-serif text-[240px] text-silk" style={{ writingMode: 'vertical-rl' }}>

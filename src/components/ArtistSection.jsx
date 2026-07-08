@@ -4,7 +4,7 @@ import { useSiteSettings } from '../hooks/useSiteSettings';
 export default function ArtistSection() {
   const { artistImage, artistBio } = useSiteSettings();
   return (
-    <section id="artist" className="relative py-32 bg-white/[0.02] overflow-hidden">
+    <section id="artist" className="relative py-24 md:py-32 scroll-mt-24 bg-white/[0.02] overflow-hidden">
       {/* Background decorative kanji */}
       <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 opacity-[0.03]">
         <span className="font-serif text-[200px] text-silk" style={{ writingMode: 'vertical-rl' }}>芸術家</span>
@@ -67,7 +67,7 @@ export default function ArtistSection() {
 
             <button
               onClick={() => document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })}
-              className="mt-10 px-8 py-3 border border-crimson/40 text-crimson font-inter text-xs tracking-[0.15em] uppercase hover:bg-crimson hover:text-obsidian transition-all duration-500"
+              className="mt-10 px-8 py-3 border border-crimson/40 text-crimson font-inter text-xs tracking-[0.15em] uppercase hover:bg-crimson hover:text-obsidian hover:-translate-y-0.5 active:translate-y-0 transition-all duration-500 ease-out"
             >
               Book a Session
             </button>

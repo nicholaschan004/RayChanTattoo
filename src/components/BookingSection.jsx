@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import { CalendarDays, FileText, ExternalLink } from 'lucide-react';
+import { FileText, ExternalLink } from 'lucide-react';
 
-const CALENDAR_EMBED_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2sEVCmvOifHOJtFKWcnfdNbL4B0q0JSO7p0NDtlq2Lx3L5ucmcwO4m7F2snW9spLS0YTK8JEk3?gv=true';
 const FORM_URL = import.meta.env.VITE_GOOGLE_FORM_URL;
 
 export default function BookingSection() {
   return (
-    <section id="booking" className="relative py-32 bg-white/[0.02] overflow-hidden">
+    <section id="booking" className="relative py-24 md:py-32 scroll-mt-24 bg-white/[0.02] overflow-hidden">
       {/* Decorative kanji */}
       <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 opacity-[0.03]">
         <span className="font-serif text-[200px] text-silk" style={{ writingMode: 'vertical-rl' }}>予約</span>
@@ -27,34 +26,28 @@ export default function BookingSection() {
           </h2>
           <div className="w-12 h-[0.5px] bg-crimson/50 mt-6 mb-8 mx-auto" />
           <p className="font-inter text-silk/40 text-sm tracking-wider leading-relaxed max-w-lg mx-auto">
-            Share your vision first so Ray can come prepared, then pick a time for your consultation.
+            Share your vision so Ray can come prepared for your piece.
           </p>
         </motion.div>
 
-        {/* Two-step cards */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
-          {/* Step 1 — Submit tattoo details */}
+        {/* Submit tattoo details */}
+        <div className="max-w-xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="border border-silk/10 bg-white/[0.02] p-8 md:p-10 flex flex-col"
+            className="border border-silk/10 bg-white/[0.02] p-8 md:p-10 flex flex-col hover:border-crimson/20 transition-colors duration-500"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-10 shrink-0 flex items-center justify-center border border-crimson text-crimson font-inter text-xs">
-                1
-              </div>
-              <div className="flex items-center gap-2">
-                <FileText size={16} className="text-crimson" strokeWidth={1.5} />
-                <h3 className="font-syne text-lg font-bold text-silk uppercase tracking-wide">
-                  Share Your Vision
-                </h3>
-              </div>
+            <div className="flex items-center gap-2 mb-6">
+              <FileText size={16} className="text-crimson" strokeWidth={1.5} />
+              <h3 className="font-syne text-lg font-bold text-silk uppercase tracking-wide">
+                Share Your Vision
+              </h3>
             </div>
 
             <p className="font-inter text-silk/40 text-xs tracking-wider leading-relaxed mb-8">
-              Tell Ray about your tattoo idea, upload reference photos, and share placement details. This helps him prepare for your consultation.
+              Tell Ray about your tattoo idea, upload reference photos, and share placement details. This helps him prepare for your piece.
             </p>
 
             <div className="mt-auto">
@@ -63,7 +56,7 @@ export default function BookingSection() {
                   href={FORM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-8 py-3.5 bg-crimson text-obsidian font-inter text-xs tracking-[0.15em] uppercase font-medium hover:bg-crimson-light transition-all duration-500 group"
+                  className="inline-flex items-center gap-3 px-8 py-3.5 bg-crimson text-obsidian font-inter text-xs tracking-[0.15em] uppercase font-medium hover:bg-crimson-light hover:-translate-y-0.5 active:translate-y-0 transition-all duration-500 ease-out group"
                 >
                   <FileText size={14} strokeWidth={1.5} />
                   Submit Tattoo Request
@@ -75,44 +68,6 @@ export default function BookingSection() {
                   Coming Soon
                 </span>
               )}
-            </div>
-          </motion.div>
-
-          {/* Step 2 — Book consultation */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="border border-silk/10 bg-white/[0.02] p-8 md:p-10 flex flex-col"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-10 shrink-0 flex items-center justify-center border border-silk/20 text-silk/40 font-inter text-xs">
-                2
-              </div>
-              <div className="flex items-center gap-2">
-                <CalendarDays size={16} className="text-silk/40" strokeWidth={1.5} />
-                <h3 className="font-syne text-lg font-bold text-silk/50 uppercase tracking-wide">
-                  Book a Consultation
-                </h3>
-              </div>
-            </div>
-
-            <p className="font-inter text-silk/40 text-xs tracking-wider leading-relaxed mb-8">
-              Once you've submitted your request, check Ray's availability and book a consultation to discuss your piece.
-            </p>
-
-            <div className="mt-auto">
-              <a
-                href={CALENDAR_EMBED_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-3.5 border border-crimson/40 text-crimson font-inter text-xs tracking-[0.15em] uppercase hover:bg-crimson hover:text-obsidian transition-all duration-500 group"
-              >
-                <CalendarDays size={14} strokeWidth={1.5} />
-                View Availability
-                <ExternalLink size={11} className="opacity-40 group-hover:opacity-70 transition-opacity" strokeWidth={1.5} />
-              </a>
             </div>
           </motion.div>
         </div>

@@ -47,29 +47,6 @@ export default function HeroSection() {
         <div className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] rounded-full bg-crimson/3 blur-[100px] ink-flow-delayed" />
       </div>
 
-      {/* Vertical side text */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.15 }}
-        transition={t(0.15)}
-        className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2"
-      >
-        <span className="font-serif text-[120px] text-silk writing-mode-vertical" style={{ writingMode: 'vertical-rl' }}>
-          入墨
-        </span>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.15 }}
-        transition={t(0.15)}
-        className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2"
-      >
-        <span className="font-serif text-[120px] text-silk" style={{ writingMode: 'vertical-rl' }}>
-          芸術
-        </span>
-      </motion.div>
-
       {/* Center content */}
       <motion.div
         style={{ opacity: heroOpacity, y: heroY }}
@@ -135,13 +112,13 @@ export default function HeroSection() {
         >
           <button
             onClick={() => scrollTo('#portfolio')}
-            className="px-10 py-3.5 bg-crimson/10 border border-crimson/30 text-crimson font-inter text-xs tracking-[0.2em] uppercase hover:bg-crimson hover:text-obsidian transition-all duration-500"
+            className="px-10 py-3.5 bg-crimson/10 border border-crimson/30 text-crimson font-inter text-xs tracking-[0.2em] uppercase hover:bg-crimson hover:text-obsidian hover:-translate-y-0.5 active:translate-y-0 transition-all duration-500 ease-out"
           >
             View Portfolio
           </button>
           <button
             onClick={() => scrollTo('#booking')}
-            className="px-10 py-3.5 bg-crimson text-obsidian font-inter text-xs tracking-[0.2em] uppercase font-medium hover:bg-crimson-light transition-all duration-500"
+            className="px-10 py-3.5 bg-crimson text-obsidian font-inter text-xs tracking-[0.2em] uppercase font-medium hover:bg-crimson-light hover:-translate-y-0.5 active:translate-y-0 transition-all duration-500 ease-out"
           >
             Book Appointment
           </button>

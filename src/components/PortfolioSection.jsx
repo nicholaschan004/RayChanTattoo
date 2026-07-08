@@ -22,7 +22,7 @@ export default function PortfolioSection() {
   };
 
   return (
-    <section id="portfolio" className="relative py-32">
+    <section id="portfolio" className="relative py-24 md:py-32 scroll-mt-24">
       {/* Section header */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 mb-16">
         <motion.div
@@ -43,13 +43,13 @@ export default function PortfolioSection() {
           <div className="flex gap-3">
             <button
               onClick={() => scroll(-1)}
-              className="w-10 h-10 border border-silk/10 flex items-center justify-center text-silk/40 hover:border-crimson/40 hover:text-crimson transition-all duration-300"
+              className="w-10 h-10 border border-silk/10 flex items-center justify-center text-silk/40 hover:border-crimson/40 hover:text-crimson hover:bg-crimson/5 transition-all duration-300"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={() => scroll(1)}
-              className="w-10 h-10 border border-silk/10 flex items-center justify-center text-silk/40 hover:border-crimson/40 hover:text-crimson transition-all duration-300"
+              className="w-10 h-10 border border-silk/10 flex items-center justify-center text-silk/40 hover:border-crimson/40 hover:text-crimson hover:bg-crimson/5 transition-all duration-300"
             >
               <ChevronRight size={18} />
             </button>
@@ -116,7 +116,7 @@ export default function PortfolioSection() {
       >
         <Link
           to="/portfolio"
-          className="px-12 py-3.5 border border-crimson/30 text-crimson font-inter text-xs tracking-[0.2em] uppercase hover:bg-crimson hover:text-obsidian transition-all duration-500"
+          className="px-12 py-3.5 border border-crimson/30 text-crimson font-inter text-xs tracking-[0.2em] uppercase hover:bg-crimson hover:text-obsidian hover:-translate-y-0.5 active:translate-y-0 transition-all duration-500 ease-out"
         >
           View All Work
         </Link>
