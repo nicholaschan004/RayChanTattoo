@@ -5,3 +5,8 @@ dist
 .venv/
 .vercel
 .env*.local
+
+# Internal notes and setup templates, deliberately not published
+CLAUDE.md
+docs/
+.env.example
